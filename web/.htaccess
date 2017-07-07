@@ -1,0 +1,23 @@
+SetEnv YII_ENV dev
+SetEnv YII_DEBUG 1
+#
+##Order deny,allow
+##Deny from all
+##Allow from 127.0.0.1
+#
+
+SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Access-Control-Allow-Credentials, Accept, Authorization, Access-Control-Allow-Origin, Vivala-Encrypted-Secret-Key"
+Header set Access-Control-Expose-Headers "X-Pagination-Total-Count, X-Pagination-Current-Page, X-Pagination-Page-Count, X-Pagination-Per-Page"
+Header set Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+Header set Access-Control-Allow-Credentials "true"
+
+RewriteEngine on
+
+# If a directory or a file exists, use the request directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# Otherwise forward the request to index.php
+RewriteRule . index.php

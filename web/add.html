@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="/assets/5913edb5/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/site.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="wrap">
+    <div class="container">
+        <div class="add-question">
+            <h1>Add new question</h1>
+            <form id="add_question" class="form-horizontal" method="post" role="form">
+                <div class="form-group required">
+                    <label class="col-lg-3 control-label">Question Text</label>
+                    <div class="col-lg-6"><input type="text" class="form-control" name="question_text" autofocus
+                                                 aria-required="true"></div>
+                </div>
+                <div class="form-group required">
+                    <label class="col-lg-3 control-label">Question Type</label>
+                    <div class="col-lg-6"><input type="text" class="form-control" name="question_type"
+                                                 aria-required="true"></div>
+                </div>
+                <div class="form-group required">
+                    <label class="col-lg-3 control-label">Language Code</label>
+                    <div class="col-lg-6"><input type="text" class="form-control" name="language_code"
+                                                 aria-required="true"></div>
+                </div>
+                <div class="form-group required">
+                    <label class="col-lg-3 control-label">Display Order</label>
+                    <div class="col-lg-6"><input type="text" class="form-control" name="display_order"
+                                                 aria-required="true"></div>
+                </div>
+                <input type="hidden" class="form-control" name="version_number" value="1">
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button type="submit" class="btn btn-primary" name="login-button">Save</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/728d8df1/jquery.js"></script>
+<script src="/assets/5eb8112c/yii.js"></script>
+<script src="/assets/5913edb5/js/bootstrap.js"></script>
+<script type="text/javascript">jQuery(document).ready(function () {
+
+    $("#add_question").on("submit", function(event){
+        event.preventDefault();
+        $.post("questions", $("#add_question").serialize(), function(data) {
+            alert('question created!');
+        });
+        return false;
+    })
+
+});</script>
+</body>
+</html>
